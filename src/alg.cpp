@@ -64,8 +64,9 @@ int countPairs3(int *arr, int len, int value) {
   if (value % 2 == 0) {
     v = value / 2;
     f = cbinsearch(arr, len, (value / 2));
-  } else
+  } else {
     v = (value + 1) / 2;
+  }
   while (arr[n] >= v) {
     n--;
   }
@@ -74,19 +75,19 @@ int countPairs3(int *arr, int len, int value) {
     if (i == 0) {
       if ((value - arr[i]) == arr[i]) {
         x = cbinsearch(arr, len, (value - arr[i])) - 1;
-      } else
+      } else {
         x = cbinsearch(arr, len, (value - arr[i]));
+      }
+      k += x;
+    } else if (arr[i] == arr[i-1]) {
       k += x;
     } else {
-      if (arr[i] == arr[i-1])
-        k += x;
-      else {
-        if ((value - arr[i]) == arr[i]) {
-          x = cbinsearch(arr, len, (value - arr[i])) - 1;
-        } else
-          x = cbinsearch(arr, len, (value - arr[i]));
-        k += x;
+      if ((value - arr[i]) == arr[i]) {
+        x = cbinsearch(arr, len, (value - arr[i])) - 1;
+      } else {
+        x = cbinsearch(arr, len, (value - arr[i]));
       }
+      k += x;
     }
   }    
   return k;
