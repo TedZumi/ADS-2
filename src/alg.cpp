@@ -79,15 +79,17 @@ int countPairs3(int *arr, int len, int value) {
         x = cbinsearch(arr, len, (value - arr[i]));
       }
       k += x;
-    } else if (arr[i] == arr[i-1]) {
-      k += x;
     } else {
-      if ((value - arr[i]) == arr[i]) {
-        x = cbinsearch(arr, len, (value - arr[i])) - 1;
+      if (arr[i] == arr[i-1]) {
+        k += x;
       } else {
-        x = cbinsearch(arr, len, (value - arr[i]));
+        if ((value - arr[i]) == arr[i]) {
+          x = cbinsearch(arr, len, (value - arr[i])) - 1;
+        } else {
+          x = cbinsearch(arr, len, (value - arr[i]));
+        }
+        k += x;
       }
-      k += x;
     }
   }    
   return k;
