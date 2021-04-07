@@ -91,7 +91,7 @@ int countPairs3(int *arr, int len, int value) {
         k += x;
       }
     }
-  }    
+  }
   return k;
 }
 
